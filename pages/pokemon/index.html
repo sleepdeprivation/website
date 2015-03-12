@@ -1,0 +1,205 @@
+<html>
+  <head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+
+	/*
+		Given an index i, an array A and another B,
+		insert A into B at (before) index i.
+		A[0] becomes B[i].
+		THIS WILL MODIFY B.
+		Example:
+		A = [1,2,3], B = [9, 8, 7], i = 1
+		Return value = [9,1,2,3,8,7]
+	*/
+	function insertAt(i, A, B){
+		for(var ii = 0; ii < A.length; ii++){
+			B.splice(i, 0, A[ii]);	//insert 1 element
+			i++;			//increment bindex
+		}
+		return B;
+	}
+
+	function loadPokemon() {
+		var retval;
+		$("#chart_div").html("Getting Data...");
+		$.ajax({
+			url: "cleanpkmn.json",
+			dataType: "JSON"
+		}).done(function(data) {
+			$("#chart_div").html("");
+			var pkmnarray = [];
+			$.each(data.pokemon, function() {
+				pkmnarray.push([this.name,
+						this.type1,
+						this.type2,
+						parseInt(this.num),
+						parseInt(this.hp),
+						parseInt(this.attack),
+						parseInt(this.defense),
+						parseInt(this['special-attack']),
+						parseInt(this['special-defense']),
+						parseInt(this.speed)
+						]);
+			});
+			listeners(pkmnarray);
+		});
+		
+	}
+
+
+
+	function listeners(pkmnarray){
+		$('#generate').click(function(){
+			makeChart(pkmnarray);
+		});
+	}
+
+
+
+	/*
+		Perform a deep copy of an array A,
+		return the copy.
+	*/
+	function deepCopy(A){
+		B=[];
+		for(var ii = 0; ii < A.length; ii++){
+			B.push(A[ii]);
+		}
+		return B;
+	}
+	//cut an array up
+	function sliceData(a, b, data){
+		var retval = [];
+		for(var ii = 0; ii < data.length; ii++){
+			retval.push(data[ii].slice(a,b));
+		}
+		return retval;
+	}
+
+	//glue 2 arrays of arrays together...
+	function glue(A, B){
+		for(var ii = 0; ii < A.length; ii++){
+			for(var kk = 0; kk < B[ii].length; kk++){
+				A[ii].push(B[ii][kk]);
+			}
+		}
+	}
+
+
+	function makeChart(pkmnarray){
+		var stat1 = parseInt($('#stat1').val());
+		var stat2 = parseInt($('#stat2').val());
+
+		//confirm data
+		for(var ii = 0; ii < pkmnarray.length; ii++){
+			$("#chart_div").append(pkmnarray[ii][2]);
+			$("#chart_div").append('<br/ >');
+		}
+		//full data
+		data = sliceData(4,10,pkmnarray);
+		console.log(data);
+		//make a header
+		var header = ["hp", "attack", "defense", "special-attack", "special-defense","speed"];
+
+		first = sliceData(stat1,stat1+1, data);
+		second = sliceData(stat2,stat2+1, data);
+		names = sliceData(0,1,pkmnarray);
+		glue(first,second);
+		glue(first,names);
+
+		var gdata = new google.visualization.DataTable();
+		gdata.addColumn('number', header[stat1]);
+		gdata.addColumn('number', header[stat2]);
+		gdata.addColumn({type:'string', role:'tooltip'});
+		gdata.addRows(first);
+
+		
+		var options = {
+			title: header[stat1]+" vs "+header[stat2],
+			hAxis: {title: header[stat1], minValue: 0, maxValue: 150},
+			vAxis: {title: header[stat2], minValue: 0, maxValue: 150},
+			legend: 'none'
+		};
+		var chart = new google.visualization.ScatterChart(document.getElementById('chart_div'));
+		chart.draw(gdata, options);
+		
+	}
+
+	google.load("visualization", "1", {packages:["corechart"]})
+	google.setOnLoadCallback(loadPokemon);
+
+
+    </script>
+
+	<style>
+		body{
+			display: in-line;
+		}
+		#chart_div{
+			float: left;
+			width: 70%;
+		}
+		#controls{
+			
+		}
+		#explanation{
+			float: right;
+			width: 20%;
+		}
+
+	</style>
+
+
+  </head>
+  <body>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+   <div id="explanation">
+
+	<div id="controls">
+	<select id="stat1">
+	<option value=0>hp</option>
+	<option value=1>atk</option>
+	<option value=2>def</option>
+	<option value=3>spatk</option>
+	<option value=4>spdef</option>
+	<option value=5>speed</option>
+	</select>
+	<select id="stat2">
+	<option value=0>hp</option>
+	<option value=1>atk</option>
+	<option value=2>def</option>
+	<option value=3>spatk</option>
+	<option value=4>spdef</option>
+	<option value=5>speed</option>
+	</select>
+	<button id="generate">
+		go!
+	</select>
+    </div>
+	<p><strong>Mouseover to see the names</strong></p>
+		<p>
+		I got the data from <a
+href="http://veekun.com/dex/downloads">veekun.com</a> (scroll to the bottom) as a sqlite
+database, which I downloaded a very long time ago (the data doesn't reflect <a
+href="https://en.wikipedia.org/wiki/Pokemon_X_and_Y">the newest games</a>). I used a program to <a href="queries.txt">query it</a>, and saved the results of said queries as a CSV file.
+Then, using a combination of <a href="json.py">python scripting</a> and find/replace in gedit,
+I got the data in the format I wanted... That is, one that looked just like <a
+href=http://www.santarosa.edu/~jperetz/projects/ajax-json/states.json>Jay's</a> states data.
+		</p>
+		From there it was easy. I read some docs <a
+href="https://google-developers.appspot.com/chart/interactive/docs/roles">here</a> and <a
+href="https://google-developers.appspot.com/chart/interactive/docs/gallery/scatterchart">here</a>
+and made some selectors. The tough part was organizing it correctly. I was suprised that
+simply putting the jquery handler in a function and calling it after I got the data worked
+out as I planned.
+		</p>
+		<p>
+		I also wrote some functions to use with arrays. Some of them I had written on
+my own time previously, some of them I had to write during this project.
+		</p>
+	</div>
+  </body>
+</html>

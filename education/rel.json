@@ -1,0 +1,442 @@
+[
+  {
+    "School":"Yuba Col",
+    "Term":"SUMR",
+    "Year":2008,
+    "Department":"PHIL",
+    "Number":"2",
+    "Title":"Ethics",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"FALL",
+    "Year":2008,
+    "Department":"ENGL",
+    "Number":"1A",
+    "Title":"College Composition and Readin",
+    "Units":4,
+    "Grade":"B"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"SUMR",
+    "Year":2008,
+    "Department":"COUNS",
+    "Number":"10",
+    "Title":"College Success",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"SPR",
+    "Year":2009,
+    "Department":"BCA",
+    "Number":"25R",
+    "Title":"Desktop Publishing",
+    "Units":2,
+    "Grade":"C"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"FALL",
+    "Year":2008,
+    "Department":"BIOL",
+    "Number":"15",
+    "Title":"Bioscience",
+    "Units":4,
+    "Grade":"C"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"SPR",
+    "Year":2009,
+    "Department":"BIOL",
+    "Number":"6",
+    "Title":"Introductory Microbiology",
+    "Units":4,
+    "Grade":"B"
+  },
+  {
+    "School":"Yuba Col",
+    "Term":"SPR",
+    "Year":2009,
+    "Department":"ART",
+    "Number":"4A",
+    "Title":"Drawing and Composition",
+    "Units":2,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2011,
+    "Department":"SPCH",
+    "Number":"1A",
+    "Title":"Introduction to Speech",
+    "Units":3,
+    "Grade":"CR"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2011,
+    "Department":"PSYCH",
+    "Number":"30",
+    "Title":"Social Psychology",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2011,
+    "Department":"POLS",
+    "Number":"1",
+    "Title":"Introduction to United States",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2009,
+    "Department":"PHYED",
+    "Number":"81.3",
+    "Title":"Adv Track & Field",
+    "Units":2,
+    "Grade":"CR"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2009,
+    "Department":"PHIL",
+    "Number":"3",
+    "Title":"Critical Thinking",
+    "Units":3,
+    "Grade":"C"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2013,
+    "Department":"MUSCP",
+    "Number":"19.1A",
+    "Title":"Classic Guitar 1",
+    "Units":2,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2013,
+    "Department":"MATH",
+    "Number":"27",
+    "Title":"Precalculus Algebra and Trigon",
+    "Units":5,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2013,
+    "Department":"LIR",
+    "Number":"10",
+    "Title":"Introduction to Information Li",
+    "Units":1,
+    "Grade":"C"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SUMR",
+    "Year":2012,
+    "Department":"HIST",
+    "Number":"21",
+    "Title":"Race, Ethnicity and Gender in",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SUMR",
+    "Year":2010,
+    "Department":"HIST",
+    "Number":"17.2",
+    "Title":"History of the United States f",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2011,
+    "Department":"HIST",
+    "Number":"17.1",
+    "Title":"History of the United States t",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2012,
+    "Department":"HIST",
+    "Number":"8.1",
+    "Title":"History of Latin America: Pre-",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SUMR",
+    "Year":2012,
+    "Department":"HIST",
+    "Number":"4.2",
+    "Title":"History of Western Civilizatio",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2013,
+    "Department":"FREN",
+    "Number":"4",
+    "Title":"Intermediate French",
+    "Units":4,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2012,
+    "Department":"FREN",
+    "Number":"3",
+    "Title":"Intermediate French-Part I",
+    "Units":4,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2011,
+    "Department":"FREN",
+    "Number":"2",
+    "Title":"Elementary French-Part II",
+    "Units":4,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SUMR",
+    "Year":2011,
+    "Department":"FREN",
+    "Number":"1",
+    "Title":"Elementary French-Part I",
+    "Units":4,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2011,
+    "Department":"CS",
+    "Number":"10",
+    "Title":"Intro to Computer Programming",
+    "Units":4,
+    "Grade":"D"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2009,
+    "Department":"ATHL",
+    "Number":"18",
+    "Title":"Women's Varsity Cross Country",
+    "Units":2,
+    "Grade":"CR"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2011,
+    "Department":"ASTRON",
+    "Number":"3",
+    "Title":"Stellar Astronomy",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2013,
+    "Department":"ART",
+    "Number":"28C",
+    "Title":"Advanced Etching",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"28B",
+    "Title":"Intermediate Etching",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"28A",
+    "Title":"Beginning Etching",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2013,
+    "Department":"ART",
+    "Number":"27A",
+    "Title":"Silkscreen Printmaking",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2011,
+    "Department":"ART",
+    "Number":"4",
+    "Title":"Principles of Color",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"1.1",
+    "Title":"World Art History to 1500",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"24",
+    "Title":"Introduction to the Art of Pri",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2013,
+    "Department":"ART",
+    "Number":"14A",
+    "Title":"Beginning Painting",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SUMR",
+    "Year":2010,
+    "Department":"ART",
+    "Number":"12",
+    "Title":"Figure Drawing",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"7B",
+    "Title":"Drawing & Composition II",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2012,
+    "Department":"ART",
+    "Number":"7A",
+    "Title":"Drawing & Composition I",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2011,
+    "Department":"ART",
+    "Number":"3",
+    "Title":"Introduction to Art & Design",
+    "Units":3,
+    "Grade":"A"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"SPR",
+    "Year":2013,
+    "Department":"ART",
+    "Number":"2.2",
+    "Title":"Renaissance to Modern Art Hist",
+    "Units":3,
+    "Grade":"B"
+  },
+  {
+    "School":"Santa Rosa Junior Col",
+    "Term":"FALL",
+    "Year":2010,
+    "Department":"ANTHRO",
+    "Number":"1",
+    "Title":"Physical Anthropology",
+    "Units":3,
+    "Grade":"CR"
+  },
+  {
+    "School":"Sonoma State University",
+    "Term":"Fall",
+    "Year":2014,
+    "Department":"HIST",
+    "Number":"335",
+    "Title":"Early China to 1500",
+    "Units":4,
+    "Grade":"A"
+  },
+  {
+    "School":"Sonoma State University",
+    "Term":"Fall",
+    "Year":2014,
+    "Department":"ARTS",
+    "Number":"340",
+    "Title":"Intermediate Etching & Woodcut",
+    "Units":3,
+    "Grade":"B+"
+  },
+  {
+    "School":"Sonoma State University",
+    "Term":"Fall",
+    "Year":2014,
+    "Department":"ARTH",
+    "Number":"470B",
+    "Title":"Asian Art",
+    "Units":4,
+    "Grade":"A"
+  }
+]

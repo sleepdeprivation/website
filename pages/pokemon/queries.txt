@@ -1,0 +1,8 @@
+#get the types:
+select pokemon_id, identifier from pokemon_types,types where pokemon_types.type_id = types.id;
+
+#get the stats:
+select pokemon_id, identifier, base_stat from pokemon_stats, stats where pokemon_stats.stat_id = stats.id;
+
+#get the names:
+select id,identifier from pokemon_species;

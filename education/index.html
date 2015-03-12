@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="application/javascript"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js" type="application/javascript"></script>
+<script src="chart.js" type="application/javascript"></script>
+
+<script src="utility.js" type="application/javascript"></script>
+
+<script src="gradeChart.js" type="application/javascript"></script>
+
+<script src="schoolData.js" type="application/javascript"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script src="handlebars-v2.0.0.js" type="application/javascript"></script>
+
+<script id="grade-row" type="text/x-handlebars-template">
+	<tr class="course">
+		<td id="title">{{Title}}</td>
+		<td id="units">{{Units}}</td>
+		<td id="grade">{{Grade}}</td>
+		<td id="term">{{Term}} {{Year}}</td>
+	</tr>
+</script>
+
+<style>
+	canvas{
+		padding: 2em;
+	}
+	#chart{
+		
+	}
+	#yearSlider{
+		text-align: center;
+		display: block;
+		width: 50%;
+		float: center;
+	}
+	#yearRangeFirst{
+		float: left;
+	}
+	#yearRangeSecond{
+		float: right;
+	}
+	#container{
+		margin: 4%;
+	}
+	#gradeTable{
+                text-align: center;
+		overflow: scroll;
+		height: 80%;
+	}
+	#gradeList *{
+		border: 1px solid black;
+	}
+	td, th{
+		padding: .3em;
+	}
+
+</style>
+
+	<title>Education</title>
+</head>
+
+
+<body>
+<div id="container">
+<button class="btn btn-primary" data-toggle="collapse" type="button" data-target="#about" aria-expanded="false" aria-controls="about">About</button>
+	<div class="row collapse" id="about">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
+			<p>Here we have an interactive version of my education thus far.</p>
+			<p>Charts courtesy of the lovely <a href="http://www.chartjs.org">Chart.js</a></p>
+			<p>This page also uses <a href="https://jquery.com/">Jquery</a>, <a href="http://handlebarsjs.com/">HandleBars</a>, and <a href="http://getbootstrap.com/">Bootstrap</a> </p>
+			<p>Initially, the line chart represents cumulative GPA (blue) and GPA per semester (gray). The pie chart shows the breakdown of my coursework by department.</p>
+			<p>Click a wedge on the pie chart to change the line chart to show GPA per semester and cumulative GPA on a per subject basis. This will also change the table to show the top GP earners for that subject in semi-chronological order.</p>
+			<p>Click the blank space right outside the pie chart to return the line chart to it's orignal state</p>
+			<p>The Table is sorted by highest number of GP (Grade Points) first, and chronologically second.</p>
+			<p>You can change the time scale for the pie chart, but this will affect neither the table nor the line chart.</p>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+
+		<br /><br />
+
+	<div class="row">
+	  
+                <div class="col-xs-12 col-md-4" id="chart">
+                        <canvas id="lineChart" width="400" height="400"></canvas>
+                </div>
+
+		<div class="col-xs-12 col-md-4" id="chart">
+			<canvas id="pieChart" width="400" height="400"></canvas>
+			<div id="yearSlider">
+				<div> Range for pie chart: </div>
+				<div id="slider"></div>
+				<div id="yearRangeFirst"></div><div id="yearRangeSecond" ></div>
+			</div>
+		</div>
+
+                <div class="col-xs-12 col-md-4" id="gradeTable">
+                        <table id="gradeList">
+
+                        </table>
+                </div>
+
+	</div>
+</div>
+
+
+<script>
+
+
+
+	var source   = $("#grade-row").html();
+	var template = Handlebars.compile(source);
+
+	var ctxPie = $("#pieChart").get(0).getContext("2d");
+	var ctxLine = $("#lineChart").get(0).getContext("2d");
+	var sDATA;
+
+	//jquery stuff
+
+	function tableGen(){
+		$('#gradeList').html("<th>Title</th><th>Units</th><th>Grade</th><th>Term</th>");	//wipe it
+		var count = 0;
+		for(var ii = sDATA.GPDATA.length-1; ii >= 0; ii--){
+			if(	LINECHARTDEPARTMENT == undefined ||
+				LINECHARTDEPARTMENT === sDATA.GPDATA[ii].Department
+			){
+				var html = template(sDATA.GPDATA[ii]);
+				$("#gradeList").append(html);
+				count++;
+			}
+		}
+	}
+
+	$(document).ready(function(){
+		Chart.defaults.global.responsive = true;
+		$.ajax({
+			url: "grades.json",
+			dataType: "JSON"
+		}).done(function(data) {
+			sDATA = new schoolData(data);
+			pieChartGen(sDATA.DATA, ctxPie);
+			lineChartGen(sDATA.SEMESTERDATA, ctxLine);
+			$("#slider").slider({
+				range: true,
+				values: [2008, 2015],
+				step: 1,
+				min: 2008,
+				max: 2015
+			});
+			$("#slider").trigger("slidechange");
+			tableGen();
+		});
+	});
+	
+	$("#pieChart").click(function(event){
+		var clicked = PIECHART.getSegmentsAtEvent(event)[0];
+		if(clicked != undefined){
+			LINECHARTDEPARTMENT = clicked.label;
+		}else{
+			LINECHARTDEPARTMENT = undefined;
+		}
+		lineChartGen(sDATA.SEMESTERDATA, ctxLine);
+		tableGen();
+	});
+
+	$( "#slider" ).on( "slidechange", function( event, ui ) {
+		var values = $("#slider").slider("values");
+		pieChartGen(sDATA.DATA, ctxPie, values[0], values[1]);
+		$("#yearRangeFirst").html(values[0]);
+		$("#yearRangeSecond").html(values[1]);
+	});
+
+</script>
+
+</body>
+
+</html>
